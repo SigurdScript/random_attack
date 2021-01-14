@@ -8,29 +8,29 @@ def actions(attacker,defender):
     
     try:
         value = int(input('Elige tu ataque: '))
+        wound = 1
         if value == 1:
             print(f'{attacker.name} LANZA ATAQUE DEVIL!')
             wound = random.randint(1,10)
-            attack(defender, wound)
-            info(defender)
             
         elif value == 2:
             print(f'{attacker.name} LANZA ATAQUE MEDIO!')
             wound = random.randint(11,20)
-            attack(defender, wound)
-            info(defender)
             
         elif value == 3:
             print(f'{attacker.name} LANZA ATAQUE FUERTE')
             wound = random.randint(21,50)
-            attack(defender, wound)
-            info(defender)
             
         else: 
-            print('Accion invalida')
+            print('\n Accion invalida \n')
+            actions(attacker,defender)
+            
+        attack(defender, wound)
+        info(defender)
         
     except ValueError:
         print('ATENCIÓN: Debe ingresar un número entero.')
+        actions(attacker,defender)
             
 def attack(defender, wound):
     print(f'{defender.name} recive {wound} de daño')
